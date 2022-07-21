@@ -1,0 +1,10 @@
+{
+  "/api/instruments": {
+    "target": "http://localhost:3333",
+    "secure": false
+  },
+  "/api/users": {
+    "target": "http://localhost:3334",
+    "secure": false
+  }
+}
