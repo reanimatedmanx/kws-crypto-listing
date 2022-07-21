@@ -1,5 +1,5 @@
 # rm-kws-interview-task
-:coin: Bitcoin app created based on the requirements defined in #1 
+:coin: Bitcoin app created based on the requirements defined in [#1](https://github.com/reanimated-man/rm-kws-interview-task/issues/1) 
 
 This project was generated using [Nx](https://nx.dev).
 
