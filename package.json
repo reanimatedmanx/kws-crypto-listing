@@ -8,7 +8,10 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Hello world :)\" && exit 1"
+    "test": "pnpm nx test",
+    "lint": "pnpm nx lint",
+    "serve": "pnpm nx serve",
+    "build": "pnpm nx build"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
