@@ -17,6 +17,7 @@ This project was generated using [Nx](https://nx.dev).
 
 **Frontend**  
 [Next.js](https://nextjs.com)  
+[Chakra UI](https://chakra-ui.com)
 
 **Notes**  
 - SQLite can be scaled to distributed postgres if required.
