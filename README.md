@@ -5,20 +5,20 @@ This project was generated using [Nx](https://nx.dev).
 
 ### Stack
 
-**Core**
-[Nx](https://nx.dev)
+**Core**  
+[Nx](https://nx.dev)  
 
-**Backend**
+**Backend**  
 [Nest.js](https://nestjs.com)  
 [Fastify](https://www.fastify.io)  
 [SQLite](https://www.sqlite.org/index.html)  
 [Prisma](https://www.prisma.io)  
 [Passport.js](https://www.passportjs.org)  
 
-**Frontend**
-[Next.js](https://nextjs.com)
+**Frontend**  
+[Next.js](https://nextjs.com)  
 
-**Notes**
+**Notes**  
 - SQLite can be scaled to distributed postgres if required.
 - Prisma can be replaced with TypeORM if needed.
 
