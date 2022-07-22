@@ -1,0 +1,17 @@
+{
+  "name": "@kwc/client-web",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "CC0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@chakra-ui/react": "^2.2.4",
+    "@chakra-ui/theme-tools": "^2.0.5",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "framer-motion": "^6"
+  }
+}
