@@ -7,6 +7,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { generateHash } from '../../utils/scrypt';
 import { RegisterDTO } from './dto/register.dto';
 import { UsersService } from './users.service';
 
@@ -29,10 +30,13 @@ export class UsersController {
       );
     }
 
-    // All good, create a new one.
+    // All good, create a new user.
+    const salt = process.env.AUTH_SALT_SECRET;
+    const hash = await generateHash(dto.password, salt);
+
     await this.users.create({
       email: dto.email,
-      password: dto.password,
+      password: hash,
     });
 
     return { message: `User '${dto.email}' created.` };
