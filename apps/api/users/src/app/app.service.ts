@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Welcome to users!' };
+  getData(): { name: string; version: string } {
+    return { name: 'Users API', version: process.env.API_VERSION };
   }
 }
