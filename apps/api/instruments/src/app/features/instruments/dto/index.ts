@@ -1,1 +1,1 @@
-export * from './find-all-instruments.dto';
+export * from './find-all-instruments-query.dto';

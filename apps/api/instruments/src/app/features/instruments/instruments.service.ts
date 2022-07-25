@@ -8,10 +8,11 @@ export class InstrumentsService {
   constructor(private prisma: PrismaService) {}
 
   async findAll({ take, skip }: RawSearchParams): Promise<Instrument[] | null> {
-    const searchParams = {
+    return this.prisma.instrument.findMany({
       take,
       skip,
-    };
+    });
+  }
 
     return this.prisma.instrument.findMany({
       orderBy: {
