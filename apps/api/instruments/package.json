@@ -1,0 +1,13 @@
+{
+  "name": "@kwc/api-instruments",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "CC0",
+  "private": true,
+  "scripts": {},
+  "prisma": {
+    "schema": "./prisma/schema.prisma"
+  }
+}
