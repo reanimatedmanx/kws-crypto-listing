@@ -1,4 +1,11 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Query,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { InstrumentsService } from './instruments.service';
 import { FindAllInstrumentsQueryDTO } from './dto';
@@ -9,7 +16,7 @@ export class InstrumentsController {
   constructor(private instruments: InstrumentsService) {}
 
   @Get()
-  @ApiOperation({ summary: 'List all instruments grabbed from CoinGecko API' })
+  @ApiOperation({ summary: 'List all instruments from internal DB.' })
   async findAll(@Query() query?: FindAllInstrumentsQueryDTO) {
     // TODO Probably extract as a pagination pipe 😭 ;)
     const page = query.page || 1;
@@ -20,5 +27,24 @@ export class InstrumentsController {
       take,
       skip,
     });
+  }
+
+  @Get(':instrument_symbol')
+  @ApiOperation({ summary: 'Get a single instrument from internal DB.' })
+  async findOne(@Param('instrument_symbol') instrumentSymbol: string) {
+    const entry = await this.instruments.findOneByInstrumentSymbol(
+      instrumentSymbol
+    );
+
+    if (!entry) {
+      throw new HttpException(
+        {
+          message: `Instrument with 'instrument_symbol' of ${instrumentSymbol} is not found`,
+        },
+        HttpStatus.NOT_FOUND
+      );
+    }
+
+    return this.instruments.findOneByInstrumentSymbol(instrumentSymbol);
   }
 }

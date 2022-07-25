@@ -7,6 +7,14 @@ import { RawSearchParams } from './models';
 export class InstrumentsService {
   constructor(private prisma: PrismaService) {}
 
+  async findOneByInstrumentSymbol(instrumentSymbol: string): Promise<Instrument | null> {
+    return this.prisma.instrument.findUnique({
+      where: {
+        instrument_symbol: instrumentSymbol,
+      },
+    });
+  }
+
   async findAll({ take, skip }: RawSearchParams): Promise<Instrument[] | null> {
     return this.prisma.instrument.findMany({
       take,
