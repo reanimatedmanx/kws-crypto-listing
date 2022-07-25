@@ -10,7 +10,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Instruments {
+model Instrument {
     id                Int      @id @default(autoincrement())
     instrument_symbol String
     instrument_name   String
