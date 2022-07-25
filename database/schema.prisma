@@ -15,8 +15,8 @@ model Instrument {
     instrument_symbol String
     instrument_name   String
     usd_price         Float
-    createdAt         DateTime @default(now())
-    updatedAt         DateTime @updatedAt
+    created_at        DateTime @default(now())
+    updated_at        DateTime @updatedAt
 }
 
 model User {
@@ -24,6 +24,6 @@ model User {
     email              String   @unique
     password           String
     instruments_access Boolean  @default(false)
-    createdAt          DateTime @default(now())
-    updatedAt          DateTime @updatedAt
+    created_at         DateTime @default(now())
+    updated_at         DateTime @updatedAt
 }
