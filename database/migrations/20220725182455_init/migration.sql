@@ -19,4 +19,7 @@ CREATE TABLE "User" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Instrument_instrument_symbol_key" ON "Instrument"("instrument_symbol");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

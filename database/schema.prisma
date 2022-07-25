@@ -12,7 +12,7 @@ datasource db {
 
 model Instrument {
     id                Int      @id @default(autoincrement())
-    instrument_symbol String
+    instrument_symbol String   @unique
     instrument_name   String
     usd_price         Float
     created_at        DateTime @default(now())
