@@ -1,5 +1,5 @@
 import { PrismaService } from '@kwc/microservices';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Instrument } from '@prisma/client';
 import { RawSearchParams } from './models';
 
@@ -14,11 +14,18 @@ export class InstrumentsService {
     });
   }
 
-    return this.prisma.instrument.findMany({
-      orderBy: {
-        instrument_name: 'desc',
-      },
-      ...searchParams,
+  async insertBulk(data: Partial<Instrument>[]): Promise<boolean | never> {
+    const operations = data.map((obj) => {
+      return this.prisma
+        .$executeRaw`INSERT OR REPLACE INTO Instrument (instrument_name, instrument_symbol, usd_price, created_at, updated_at) VALUES (${obj.instrument_name}, ${obj.instrument_symbol}, ${obj.usd_price}, ${obj.updated_at}, ${obj.updated_at})`;
     });
+
+    try {
+      await this.prisma.$transaction(operations);
+      return true;
+    } catch (err) {
+      Logger.error('[FATAL] Instrument transaction failed');
+      throw err;
+    }
   }
 }

@@ -3,10 +3,10 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { MicroservicesModule } from '@kwc/microservices';
 import { ScheduleModule } from '@nestjs/schedule';
-import { HttpModule } from '@nestjs/axios'
+import { InstrumentsModule } from '../instruments/instruments.module';
 
 @Module({
-  imports: [MicroservicesModule, HttpModule, ScheduleModule.forRoot()],
+  imports: [MicroservicesModule, ScheduleModule.forRoot(), InstrumentsModule],
   controllers: [],
   providers: [TasksService, ConfigService],
 })

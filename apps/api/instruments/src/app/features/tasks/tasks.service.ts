@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+
 import { Cron } from '@nestjs/schedule';
-import { HttpService } from '@nestjs/axios';
-import { firstValueFrom } from 'rxjs';
+import { CoinGeckoApiService } from '../instruments/coin-gecko-api.service';
+import { InstrumentsService } from '../instruments/instruments.service';
 /**
  * A barebones task service.
  * A much more sophisticated way of implementing this would be to make it unaware of what it should execute to make it trully generic.
@@ -12,36 +12,35 @@ export class TasksService {
   private readonly logger = new Logger(TasksService.name);
 
   constructor(
-    private readonly configService: ConfigService,
-    private readonly httpService: HttpService
+    private readonly coinGeckoApi: CoinGeckoApiService,
+    private readonly instruments: InstrumentsService
   ) {}
 
   @Cron('*/5 * * * * *')
   async handleFetchCoins() {
     const startTime = Date.now();
-    const uri = this.configService.get('API_EXTERNAL_COINGECKO');
 
-    let shouldUpdateDb = false;
+    const res = await this.coinGeckoApi.fetch();
 
-    try {
-      this.logger.debug(`Fetching ${uri}...`);
-
-      const stream$ = this.httpService.get(uri);
-      const res = await firstValueFrom(stream$);
-      const endTime = Date.now();
-      const totalTimeMs = endTime - startTime;
-      shouldUpdateDb = !!res.data.length;
-
+    if (!res.data.length) {
       this.logger.log(
-        `Fetched ${res.data.length} entries successfully in ${totalTimeMs}ms.`
+        `Empty data received from ${CoinGeckoApiService.name}.fetch(),
+         no need to insert/replace data in the DB.`
       );
-    } catch (err) {
-      this.logger.debug(`Fetching ${uri} failed. Skipping update.`);
-      this.logger.error(err);
+      return;
     }
 
-    if (shouldUpdateDb) {
-      // TODO the DB update goes here.
+    try {
+      await this.instruments.insertBulk(res.data);
+      const totalTimeMs = Date.now() - startTime;
+      this.logger.log(
+        `Updated ${res.data.length} entries successfully in ${totalTimeMs}ms.`
+      );
+    } catch (err) {
+      this.logger.error(
+        `Something went wrong while bulk inserting instruments data.`
+      );
+      this.logger.error(err);
     }
   }
 }
