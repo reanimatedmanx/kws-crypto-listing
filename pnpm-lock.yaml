@@ -9,6 +9,7 @@ importers:
       '@emotion/server': 11.4.0
       '@emotion/styled': 11.9.3
       '@fastify/static': ^6.4.1
+      '@nestjs/axios': ^0.1.0
       '@nestjs/bull': ^0.6.0
       '@nestjs/common': ^9.0.5
       '@nestjs/config': ^2.2.0
@@ -75,6 +76,7 @@ importers:
       '@emotion/server': 11.4.0
       '@emotion/styled': 11.9.3_fvt6vw5dbjpm44qz3h4f3p6jia
       '@fastify/static': 6.4.1
+      '@nestjs/axios': 0.1.0_d3lkybs743xih4gqxxdbtu2qq4
       '@nestjs/bull': 0.6.0_wvanidnrr4ppsui4wxvfmmnhmu
       '@nestjs/common': 9.0.5_allg6cauirbqzgqcmexy2wdnoq
       '@nestjs/config': 2.2.0_d3lkybs743xih4gqxxdbtu2qq4
@@ -2877,6 +2879,21 @@ packages:
     dev: false
     optional: true
 
+  /@nestjs/axios/0.1.0_d3lkybs743xih4gqxxdbtu2qq4:
+    resolution: {integrity: sha512-b2TT2X6BFbnNoeteiaxCIiHaFcSbVW+S5yygYqiIq5i6H77yIU3IVuLdpQkHq8/EqOWFwMopLN8jdkUT71Am9w==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
+      reflect-metadata: ^0.1.12
+      rxjs: ^6.0.0 || ^7.0.0
+    dependencies:
+      '@nestjs/common': 9.0.5_allg6cauirbqzgqcmexy2wdnoq
+      axios: 0.27.2
+      reflect-metadata: 0.1.13
+      rxjs: 7.5.6
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /@nestjs/bull-shared/0.1.0_yhkp7kxuauoq6imzcegikmb6ju:
     resolution: {integrity: sha512-BVVLj0HeLZ3bj9G/AXW+43AVT8BSSgP+s+9+YHrkGSLLgXNc5G2lRL20zOTqMO1gPiKRwOOvO8r3//5Ijyaikg==}
     peerDependencies:
@@ -5149,6 +5166,15 @@ packages:
     resolution: {integrity: sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==}
     engines: {node: '>=4'}
 
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+    dependencies:
+      follow-redirects: 1.15.1
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
 
@@ -7256,6 +7282,15 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+
+  /form-data/4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.35
+    dev: false
 
   /forwarded/0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
