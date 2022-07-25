@@ -6,9 +6,11 @@ import {
   HttpStatus,
   Post,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { generateHash } from '../../utils/scrypt';
 import { LoginDTO } from './dto/login.dto';
 import { RegisterDTO } from './dto/register.dto';
@@ -17,7 +19,7 @@ import { UsersService } from './users.service';
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
-  constructor(private users: UsersService, private jwtService: JwtService) {}
+  constructor(private users: UsersService, private jwt: JwtService) {}
 
   @Post('register')
   async register(@Body() dto: RegisterDTO) {
@@ -58,7 +60,7 @@ export class UsersController {
     }
 
     // User exists, create a JWT access token for him.
-    const accessToken = await this.jwtService.signAsync({
+    const accessToken = await this.jwt.signAsync({
       email: dto.email,
     });
 
@@ -66,9 +68,10 @@ export class UsersController {
   }
 
   @Get('session-verify')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard())
   async sessionVerify() {
-    console.log('login()');
-
-    return { message: 'OK' };
+    // Let the passport.js guard handle it via implemented strategy ✌
+    return { message: 'Authorized' };
   }
 }

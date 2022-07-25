@@ -9,18 +9,22 @@ const jwtFactory = {
       signOptions: {
         expiresIn: configService.get('AUTH_JWT_EXP'),
       },
-    }
-  }, 
+    };
+  },
   imports: [],
   inject: [ConfigService],
 };
+
+const publicModules = [
+  JWT.registerAsync(jwtFactory),
+];
 
 /**
  * A wrapper around original @nestjs/jwt configured based on project requirements.
  */
 @Module({
-  imports: [JWT.registerAsync(jwtFactory)],
+  imports: [...publicModules],
   providers: [ConfigService, JwtService],
-  exports: [ConfigService, JWT.registerAsync(jwtFactory)],
+  exports: [...publicModules],
 })
 export class JwtModule {}

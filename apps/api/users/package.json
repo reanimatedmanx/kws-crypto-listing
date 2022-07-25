@@ -9,5 +9,10 @@
   "scripts": {},
   "prisma": {
     "schema": "./prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@nestjs/passport": "^9.0.0",
+    "@types/passport-jwt": "^3.0.6",
+    "passport-jwt": "^4.0.0"
   }
 }
