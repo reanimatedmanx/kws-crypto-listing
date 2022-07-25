@@ -27,13 +27,10 @@ This project was generated using [Nx](https://nx.dev).
 
 ### DB Migrations
 
-In the directory of your microservice.
-
 `pnpm prisma migrate <db_name> --name <any_migration_name>`
 
 Example
 
 ```bash
-cd apps/api/instruments
 pnpm prisma migrate dev --name init
 ```

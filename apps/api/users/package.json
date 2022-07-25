@@ -7,9 +7,6 @@
   "license": "CC0",
   "private": true,
   "scripts": {},
-  "prisma": {
-    "schema": "./prisma/schema.prisma"
-  },
   "dependencies": {
     "@nestjs/passport": "^9.0.0",
     "@types/passport-jwt": "^3.0.6",

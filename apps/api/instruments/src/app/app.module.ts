@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MicroservicesModule } from '@kwc/microservices';
 
 @Module({
-  imports: [],
+  imports: [MicroservicesModule],
   controllers: [AppController],
   providers: [AppService],
 })

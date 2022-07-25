@@ -6,8 +6,5 @@
   "author": "",
   "license": "CC0",
   "private": true,
-  "scripts": {},
-  "prisma": {
-    "schema": "./prisma/schema.prisma"
-  }
+  "scripts": {}
 }

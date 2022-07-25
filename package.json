@@ -78,5 +78,8 @@
     "regenerator-runtime": "0.13.7",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0"
+  },
+  "prisma": {
+    "schema": "./database/schema.prisma"
   }
 }

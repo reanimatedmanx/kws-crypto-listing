@@ -6,6 +6,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import { PrismaService } from '../modules/prisma/prisma.service';
 
 /**
  * Initializes a preconfigured nest.js microservice.
@@ -32,6 +33,9 @@ export async function bootstrap(
   );
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app)
 
   const config = new DocumentBuilder()
     .setTitle(name)
