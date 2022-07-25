@@ -5,9 +5,10 @@ import { AppService } from './app.service';
 import { CoreModule } from './core/core.module';
 import { UsersModule } from './features/users/users.module';
 import { AuthModule } from './features/auth/auth.module';
+import { MicroservicesModule } from '@kwc/microservices';
 
 @Module({
-  imports: [CoreModule, UsersModule, AuthModule],
+  imports: [MicroservicesModule, CoreModule, UsersModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

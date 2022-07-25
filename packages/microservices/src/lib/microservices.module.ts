@@ -1,18 +1,18 @@
 import { Global, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PrismaModule } from './modules/prisma/prisma.module';
 
 const publicModules = [
-  PrismaModule,
   ConfigModule.forRoot({
-    envFilePath: ['.env.development', '.env.test', '.env', '.env.prod'],
+    isGlobal: true
   }),
+  PrismaModule,
 ];
 @Global()
 @Module({
   imports: [...publicModules],
   controllers: [],
-  providers: [],
+  providers: [ConfigService],
   exports: [...publicModules],
 })
 export class MicroservicesModule {}
