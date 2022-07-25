@@ -5,16 +5,19 @@ import {
   HttpException,
   HttpStatus,
   Post,
+  UnauthorizedException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { ApiTags } from '@nestjs/swagger';
 import { generateHash } from '../../utils/scrypt';
+import { LoginDTO } from './dto/login.dto';
 import { RegisterDTO } from './dto/register.dto';
 import { UsersService } from './users.service';
 
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
-  constructor(private users: UsersService) {}
+  constructor(private users: UsersService, private jwtService: JwtService) {}
 
   @Post('register')
   async register(@Body() dto: RegisterDTO) {
@@ -43,10 +46,23 @@ export class UsersController {
   }
 
   @Post('login')
-  async login() {
-    console.log('login()');
+  async login(@Body() dto: LoginDTO) {
+    // Try to search for an existing user with this email/password combination.
+    const existingUser = await this.users.findByEmailAndMatchingPassword({
+      email: dto.email,
+      password: dto.password,
+    });
 
-    return { message: 'OK' };
+    if (!existingUser) {
+      throw new UnauthorizedException('Incorrect email/password.');
+    }
+
+    // User exists, create a JWT access token for him.
+    const accessToken = await this.jwtService.signAsync({
+      email: dto.email,
+    });
+
+    return { accessToken };
   }
 
   @Get('session-verify')
