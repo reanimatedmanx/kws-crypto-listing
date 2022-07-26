@@ -25,8 +25,8 @@ pnpm serve # Launch default app `web`
 
 3. **Have fun** 🎉
 
-<img src="https://user-images.githubusercontent.com/32410574/180906724-f18a16fb-a808-4322-ba83-4dd40a31260b.png" width=300>
-<img src="https://user-images.githubusercontent.com/32410574/180906765-e592e91a-8a04-4683-8cff-b23d07fde0f6.png" width=300>
+<img src="https://user-images.githubusercontent.com/32410574/180906724-f18a16fb-a808-4322-ba83-4dd40a31260b.png" width=480>
+<img src="https://user-images.githubusercontent.com/32410574/180906765-e592e91a-8a04-4683-8cff-b23d07fde0f6.png" width=480>
 
 
 ```
