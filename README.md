@@ -18,9 +18,13 @@ pnpm i
 
 2. **Launch apps**
 ```
+# Serve individually.
 pnpm serve api-users
 pnpm serve api-instruments
 pnpm serve # Launch default app `web`
+
+# Serve all in parallel
+pnpm serve:all
 ```
 
 3. **Have fun** 🎉
