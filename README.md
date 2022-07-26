@@ -77,3 +77,4 @@ pnpm prisma migrate dev --name init
 **Final thoughts**
 
 * Obviously everything can be improved & finalized (including optional UI and api integration), it's a perpetual action. Nothing is perfect, everything can be refined. * Tests where not mentioned in the technical challenge, could be written in parallel but wanted to leave that for the end and ended up not having enough time to finalize it.
+* P.S. I still hate Next.js middleware API. 😆
