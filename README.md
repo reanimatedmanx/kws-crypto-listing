@@ -6,7 +6,7 @@ This project was generated using [Nx](https://nx.dev).
 
 ### Getting up & running
 
-0. **Prerequisites**
+1. **Prerequisites**
 ```
 # Get pnpm https://pnpm.io/pnpm-cli
 ```
@@ -16,11 +16,24 @@ git clone https://github.com/reanimated-man/rm-kws-interview-task.git
 pnpm i
 ```
 
-1. Launch apps
+2. Launch apps
 ```
 pnpm serve api-users
 pnpm serve api-instruments
 pnpm serve # Launch default app `web`
+```
+
+3. Have fun 🎉
+![image](https://user-images.githubusercontent.com/32410574/180906724-f18a16fb-a808-4322-ba83-4dd40a31260b.png)
+![image](https://user-images.githubusercontent.com/32410574/180906765-e592e91a-8a04-4683-8cff-b23d07fde0f6.png)
+
+
+```
+# Instruments API Swagger playground
+http://localhost:3333/api/docs
+
+# Users API Swagger playground
+http://localhost:3334/api/docs
 ```
 
 ### Stack
