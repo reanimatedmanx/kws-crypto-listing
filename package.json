@@ -10,8 +10,9 @@
   "scripts": {
     "test": "pnpm nx test",
     "lint": "pnpm nx lint",
+    "build": "pnpm nx build",
     "serve": "pnpm nx serve",
-    "build": "pnpm nx build"
+    "serve:all": "pnpm nx run-many --target=serve --all --parallel=3"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
